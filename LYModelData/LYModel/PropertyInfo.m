@@ -34,7 +34,7 @@
     }
     NSString *setter = [NSString stringWithFormat:@"set%@%@:", [_propertyName substringToIndex:1].uppercaseString, [_propertyName substringFromIndex:1]];
     _setter =  NSSelectorFromString(setter);
-    
+    _getter = NSSelectorFromString(_propertyName);
     
     return self;
     

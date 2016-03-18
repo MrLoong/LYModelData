@@ -29,7 +29,6 @@
 - (IBAction)JsonToObject:(id)sender {
     
     
-    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     NSString *xxx = @"nihao1";
     id parmenters = @{
                       @"created":xxx,
@@ -37,23 +36,9 @@
                       @"name":@"张俊",
                       @"time":@"2011-01-18 03:55:49 +0000"
                       };
-    txsss *x = [txsss ly_modelWithJSON:parmenters];
-    
-    NSDictionary *myClassDict;
-    myClassDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        @"2011-01-18 03:55:49 +0000", @"time",
-                                        @1.32323, @"uid",
-                                        @"张俊", @"name",
-                                        xxx, @"created",
-                                        x, @"user",nil];
-    
-    txsss *xx = [txsss ly_modelWithJSON:myClassDict];
-    
-//    txsss *x = [[txsss alloc] init];
-//    [x te];
-
-    NSLog(@"%@",xx.uid);
-    NSLog(@"%@",x.time);
+    txsss *x = [txsss LDModelWithJSON:parmenters];
+    NSDictionary *d = [x LDModelToJson];
+    NSLog(@"%@",d);
 
 }
 

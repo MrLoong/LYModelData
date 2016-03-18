@@ -35,6 +35,11 @@
  */
 @property(nonatomic,assign) SEL setter;
 
+/**
+ *  获取属性值
+ */
+@property(nonatomic,assign) SEL getter;
+
 
 /**
  *   初始化属性信息

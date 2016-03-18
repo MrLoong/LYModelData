@@ -18,20 +18,29 @@
  *
  *  @return 返回当前创建的实例，失败返回
  */
-+(instancetype)ly_modelWithJSON:(id) json;
++(instancetype)LDModelWithJSON:(id) json;
 
 /**
  *  映射到实例属性的一个键值字典。
  *
  *  @return 返回NSdictonary创建的实例，失败返回
  */
-+(instancetype)ly_modelWithDictonary:(NSDictionary *)dictonary;
++(instancetype)LDModelWithDictonary:(NSDictionary *)dictonary;
 
 /**
  *  遍历属性信息
  *
  *  @return 是否成功 YES 或 NO
  */
--(BOOL)ly_modelSelectProperties:(NSDictionary *)dictonary;
+-(BOOL)LDModelSelectProperties:(NSDictionary *)dictonary;
+
+
+/**
+ *  model转JSON
+ *
+ *  @return JSON
+ */
+-(id)LDModelToJson;
+
 
 @end

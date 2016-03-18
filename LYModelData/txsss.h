@@ -15,8 +15,6 @@
 @property NSString *name;
 @property NSString *created;
 @property NSData *time;
-@property txsss *user;
-
 
 -(void)te;
 //@property NSArray *arry;

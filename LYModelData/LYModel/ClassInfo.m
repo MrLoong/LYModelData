@@ -19,8 +19,6 @@
     
     return self;
 }
-
-
 -(void)setClassPropertyInfo{
     Class cls = self.cls;
     
@@ -36,6 +34,10 @@
         }
     }
     self.propertyInfo = dic;
+    
+    NSLog(@"%@",dic);
+    NSLog(@"===============================");
+    
     free(propertys);
 }
 
