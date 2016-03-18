@@ -18,8 +18,11 @@
         _propertyName = [NSString stringWithUTF8String:name];
     }
     
+
     unsigned int attrCount;
     objc_property_attribute_t *attrs = property_copyAttributeList(property, &attrCount);
+
+    
     
     for (unsigned int i = 0; i<attrCount; i++) {
         if (attrs[i].name[0] == 'T') {

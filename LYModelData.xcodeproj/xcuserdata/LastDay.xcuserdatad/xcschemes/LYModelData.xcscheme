@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC382F421C59E09A00264C3B"
-               BuildableName = "LYModelDataTests.xctest"
+               BuildableName = "LYModelData.xctest"
                BlueprintName = "LYModelDataTests"
                ReferencedContainer = "container:LYModelData.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC382F4D1C59E09A00264C3B"
-               BuildableName = "LYModelDataUITests.xctest"
+               BuildableName = "LYModelData.xctest"
                BlueprintName = "LYModelDataUITests"
                ReferencedContainer = "container:LYModelData.xcodeproj">
             </BuildableReference>

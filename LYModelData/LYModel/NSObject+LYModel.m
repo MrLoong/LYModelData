@@ -11,24 +11,24 @@
 
 @implementation NSObject(LYModel)
 
-+(instancetype)LDModelWithJSON :(id)json{
++(instancetype)LYModelWithJSON :(id)json{
     NSDictionary *dic = json;
-    return [self LDModelWithDictonary:dic];
+    return [self LYModelWithDictonary:dic];
 }
 
-+(instancetype)LDModelWithDictonary:(NSDictionary *)dictonary{
++(instancetype)LYModelWithDictonary:(NSDictionary *)dictonary{
     
     Class object = [self class];
     NSObject *modelObject = [object new];
     
-    if ([modelObject LDModelSelectProperties:dictonary]) {
+    if ([modelObject LYModelSelectProperties:dictonary]) {
         return modelObject;
     }
     return nil;
 }
 
 
--(BOOL)LDModelSelectProperties:(NSDictionary *)dictonary{
+-(BOOL)LYModelSelectProperties:(NSDictionary *)dictonary{
     
     
     ClassInfo *cls = [[ClassInfo alloc]initWithClass:object_getClass(self)];
@@ -40,19 +40,17 @@
         value = [dictonary objectForKey: key];
         
         if (cls.propertyInfo[key]) {
-            [self LDModelSetPropertyWithModel:self value:value propertyInfo:cls.propertyInfo[key]];
+            [self LYModelSetPropertyWithModel:self value:value propertyInfo:cls.propertyInfo[key]];
         }
     }
     return YES;
-
-
 }
--(id)LDModelToJson{
-    id jsonObject = [self modelToJsonObject:self];
+-(id)LYModelToJson{
+    id jsonObject = [self LYModelToJsonObject:self];
     return jsonObject;
 }
 
--(id)modelToJsonObject:(NSObject *)model{
+-(id)LYModelToJsonObject:(NSObject *)model{
     
     Class cls = self.class;
     unsigned int countProperty = 0;
@@ -62,19 +60,19 @@
     for (unsigned int i = 0; i<countProperty; i++) {
         PropertyInfo *propertyInfo = [[PropertyInfo alloc] initWithProperty:propertys[i]];
         if (propertyInfo.propertyName!=nil) {
-            dic[propertyInfo.propertyName] = [self ly_modelSetJsonObjectWith:model propertyInfo:propertyInfo];
+            dic[propertyInfo.propertyName] = [self LYModelSetJsonWith:model propertyInfo:propertyInfo];
         }
     }
     return dic;
 }
 
--(void)LDModelSetPropertyWithModel:(id) model value:(id)value propertyInfo:(PropertyInfo *) propertyInfo{
+-(void)LYModelSetPropertyWithModel:(id) model value:(id)value propertyInfo:(PropertyInfo *) propertyInfo{
     ((void (*)(id, SEL, id))(void *) objc_msgSend)((id)model, propertyInfo.setter, value);
 }
 
--(id)ly_modelSetJsonObjectWith:(id)model propertyInfo:(PropertyInfo *)propertyInfo{
-    id v = ((id (*)(id, SEL))(void *) objc_msgSend)((id)model, propertyInfo.getter);
-    return v;
+-(id)LYModelSetJsonWith:(id)model propertyInfo:(PropertyInfo *)propertyInfo{
+    id value = ((id (*)(id, SEL))(void *) objc_msgSend)((id)model, propertyInfo.getter);
+    return value;
 }
 
 

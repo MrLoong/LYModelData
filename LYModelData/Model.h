@@ -9,17 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+LYModel.h"
 
-@interface txsss : NSObject
+@interface Model : NSObject
 
-@property NSNumber *uid;
+@property NSNumber *age;
 @property NSString *name;
-@property NSString *created;
+@property NSString *girlFriend;
 @property NSData *time;
-
--(void)te;
-//@property NSArray *arry;
-//@property NSData *data;
-//@property int x;
-//@property char c;
 
 @end

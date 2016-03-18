@@ -6,10 +6,10 @@
 //  Copyright © 2016年 LastDay. All rights reserved.
 //
 
-#import "txsss.h"
+#import "Model.h"
 
 
-@implementation txsss
+@implementation Model 
 
 
 @end

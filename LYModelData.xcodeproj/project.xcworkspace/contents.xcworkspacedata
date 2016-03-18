@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:LYModelData.xcodeproj">
+      location = "self:/Users/MrLoong/Documents/MyRepositories/LYModelData/LYModelData.xcodeproj">
    </FileRef>
 </Workspace>

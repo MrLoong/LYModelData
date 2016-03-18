@@ -25,6 +25,8 @@
     unsigned int countProperty = 0;
     
     objc_property_t *propertys = class_copyPropertyList(cls,&countProperty);
+
+    
     NSMutableDictionary *dic = [NSMutableDictionary new];
     
     for (unsigned int i = 0; i<countProperty; i++) {
@@ -34,10 +36,6 @@
         }
     }
     self.propertyInfo = dic;
-    
-    NSLog(@"%@",dic);
-    NSLog(@"===============================");
-    
     free(propertys);
 }
 
