@@ -40,17 +40,17 @@
         value = [dictonary objectForKey: key];
         
         if (cls.propertyInfo[key]) {
-            [self LYModelSetPropertyWithModel:self value:value propertyInfo:cls.propertyInfo[key]];
+            [self LYModelSetPropertyWithModel:value propertyInfo:cls.propertyInfo[key]];
         }
     }
     return YES;
 }
 -(id)LYModelToJson{
-    id jsonObject = [self LYModelToJsonObject:self];
+    id jsonObject = [self LYModelToJsonObject];
     return jsonObject;
 }
 
--(id)LYModelToJsonObject:(NSObject *)model{
+-(id)LYModelToJsonObject{
     
     Class cls = self.class;
     unsigned int countProperty = 0;
@@ -60,22 +60,20 @@
     for (unsigned int i = 0; i<countProperty; i++) {
         PropertyInfo *propertyInfo = [[PropertyInfo alloc] initWithProperty:propertys[i]];
         if (propertyInfo.propertyName!=nil) {
-            dic[propertyInfo.propertyName] = [self LYModelSetJsonWith:model propertyInfo:propertyInfo];
+            dic[propertyInfo.propertyName] = [self LYModelSetJsonWith: propertyInfo];
         }
     }
     return dic;
 }
 
--(void)LYModelSetPropertyWithModel:(id) model value:(id)value propertyInfo:(PropertyInfo *) propertyInfo{
-    ((void (*)(id, SEL, id))(void *) objc_msgSend)((id)model, propertyInfo.setter, value);
+-(void)LYModelSetPropertyWithModel:(id)value propertyInfo:(PropertyInfo *) propertyInfo{
+    ((void (*)(id, SEL, id))(void *) objc_msgSend)((id)self, propertyInfo.setter, value);
 }
 
--(id)LYModelSetJsonWith:(id)model propertyInfo:(PropertyInfo *)propertyInfo{
-    id value = ((id (*)(id, SEL))(void *) objc_msgSend)((id)model, propertyInfo.getter);
+-(id)LYModelSetJsonWith:(PropertyInfo *)propertyInfo{
+    id value = ((id (*)(id, SEL))(void *) objc_msgSend)((id)self, propertyInfo.getter);
     return value;
 }
-
-
 
 @end
 
